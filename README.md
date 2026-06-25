@@ -148,7 +148,45 @@ Web apps are named `{webapp_name}-{random_suffix}` where the suffix is a random 
 
 ### Outputs
 
-> Outputs are defined in `outputs.tf` and can be extended to expose web app URL, default hostname, and service plan ID.
+| Output | Description |
+|--------|-------------|
+| `web_app_id` | ID of the Linux Web App |
+| `web_app_name` | Name of the Linux Web App |
+| `web_app_default_hostname` | Default hostname of the Linux Web App |
+| `service_plan_id` | ID of the App Service Plan |
+
+### Consuming this module
+
+#### From Terraform Registry (after publishing)
+
+```hcl
+module "app_service" {
+  source  = "melvinsatheesan/terraform-techem-multicloud/azurerm"
+  version = "1.0.0"
+
+  webapp_name                 = "my-node-app"
+  service_plan_name           = "asp-my-node-app"
+  service_plan_resource_group = "rg-my-app"
+  os_type                     = "Linux"
+  sku_name                    = "B1"
+}
+```
+
+#### From Git (works today)
+
+```hcl
+module "app_service" {
+  source = "git::https://github.com/melvinsatheesan/terraform-techem-multicloud.git//azure/app-service?ref=v1.0.0"
+
+  webapp_name                 = "my-node-app"
+  service_plan_name           = "asp-my-node-app"
+  service_plan_resource_group = "rg-my-app"
+  os_type                     = "Linux"
+  sku_name                    = "B1"
+}
+```
+
+> **Note:** The GitHub repository is `terraform-techem-multicloud` (not `techem`). Registry source `melvinsatheesan/techem/azurerm` will not work.
 
 ---
 

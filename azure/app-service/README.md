@@ -8,7 +8,7 @@ Terraform module that provisions an Azure Linux Web App with an optional new App
 
 ```hcl
 module "app_service" {
-  source  = "melvinsatheesan/techem/azurerm"
+  source  = "melvinsatheesan/terraform-techem-multicloud/azurerm"
   version = "1.0.0"
 
   webapp_name                 = "my-node-app"
@@ -25,7 +25,7 @@ module "app_service" {
 
 ```hcl
 module "app_service" {
-  source  = "melvinsatheesan/techem/azurerm"
+  source  = "melvinsatheesan/terraform-techem-multicloud/azurerm"
   version = "1.0.0"
 
   webapp_name                 = "my-node-app"
